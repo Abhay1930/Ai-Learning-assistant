@@ -25,7 +25,7 @@ function App() {
     setReview("");
     
     try {
-      const response = await axios.post('http://localhost:3000/ai/get-review', { code })
+      const response = await axios.post('https://ai-learning-assistant-backend-mhq2.onrender.com/ai/get-review', { code })
       setReview(response.data)
     } catch (err) {
       setError(err.response?.data?.error || "An error occurred while connecting to the server.");
