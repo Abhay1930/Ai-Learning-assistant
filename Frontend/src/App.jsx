@@ -56,7 +56,7 @@ function App() {
             />
           </div>
           <div onClick={reviewCode} className={`review-btn ${isLoading ? 'loading' : ''}`}>
-            {isLoading ? "Analyzing..." : "Review Code"}
+            {isLoading ? "Analyzing..." : "Analyze & Learn"}
           </div>
         </div>
         <div className="right">
