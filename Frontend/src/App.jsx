@@ -35,51 +35,73 @@ function App() {
   }
 
   return (
-    <>
+    <div className="app-container">
+      <header className="header">
+        <div className="logo">
+          <span className="logo-icon">✨</span>
+          <h1>AI Learning Assistant</h1>
+        </div>
+        <nav className="nav">
+          <a href="#" className="nav-link active">Editor</a>
+          <a href="#" className="nav-link">History</a>
+          <a href="#" className="nav-link">Settings</a>
+        </nav>
+      </header>
+      
       <main>
-        <div className="left">
+        <div className="left panel">
+          <div className="panel-header">
+            <span>Editor</span>
+            <span className="lang-badge">JavaScript</span>
+          </div>
           <div className="code">
             <Editor
               value={code}
               onValueChange={code => setCode(code)}
               highlight={code => prism.highlight(code, prism.languages.javascript, "javascript")}
               padding={20}
+              className="editor"
               style={{
-                fontFamily: '"Fira Code", "Fira Mono", monospace',
-                fontSize: 16,
-                border: "none",
-                borderRadius: "12px",
+                fontFamily: '"Fira Code", monospace',
+                fontSize: 15,
                 height: "100%",
                 width: "100%",
                 outline: "none",
               }}
             />
           </div>
-          <div onClick={reviewCode} className={`review-btn ${isLoading ? 'loading' : ''}`}>
+          <button onClick={reviewCode} className={`review-btn ${isLoading ? 'loading' : ''}`}>
             {isLoading ? "Analyzing..." : "Analyze & Learn"}
-          </div>
+          </button>
         </div>
-        <div className="right">
+        
+        <div className="right panel">
+          <div className="panel-header">
+            <span>Review Insights</span>
+          </div>
           {isLoading && (
             <div className="loader-container">
-              <div className="spinner"></div>
-              <p>AI is reviewing your code...</p>
+              <div className="pulse-loader"></div>
+              <p>Studying your code concepts...</p>
             </div>
           )}
           {error && <div className="error-message">{error}</div>}
           {!isLoading && !error && review && (
-            <Markdown rehypePlugins={[ rehypeHighlight ]}>
-              {review}
-            </Markdown>
+            <div className="review-content">
+              <Markdown rehypePlugins={[ rehypeHighlight ]}>
+                {review}
+              </Markdown>
+            </div>
           )}
           {!isLoading && !error && !review && (
             <div className="empty-state">
-              <p>Enter your code on the left and click "Review Code" to get started.</p>
+              <div className="empty-icon">💡</div>
+              <p>Ready to level up? Enter your code and click "Analyze & Learn" for a personalized teaching session.</p>
             </div>
           )}
         </div>
       </main>
-    </>
+    </div>
   )
 }
 
