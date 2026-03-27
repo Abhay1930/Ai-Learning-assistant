@@ -43,8 +43,6 @@ function App() {
         </div>
         <nav className="nav">
           <a href="#" className="nav-link active">Editor</a>
-          <a href="#" className="nav-link">History</a>
-          <a href="#" className="nav-link">Settings</a>
         </nav>
       </header>
       
@@ -52,7 +50,6 @@ function App() {
         <div className="left panel">
           <div className="panel-header">
             <span>Editor</span>
-            <span className="lang-badge">JavaScript</span>
           </div>
           <div className="code">
             <Editor
